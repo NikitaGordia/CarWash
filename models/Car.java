@@ -11,7 +11,7 @@ public class Car implements CTUObserver {
     private int number;
     private int type;
 
-    private int waitingFrom;
+    private int waitingTo;
 
     public Car(int type, int number, int washTime, int price) {
         this.washTime = washTime;
@@ -28,16 +28,19 @@ public class Car implements CTUObserver {
 
     @Override
     public void start(int tm, CarWash carWash) {
-        if (waitingFrom == -1) return; //Car is washing or have already washed
-        if (waitingFrom == 0) { //Start waiting timer
-            waitingFrom = tm;
-            carWash.pushObserver(waitingFrom + CAR_WAITING_LIMIT, this);
+        if (waitingTo == -1) return; //Car is washing or have already washed
+        if (waitingTo == 0) { //Start waiting timer
+            waitingTo = tm + CAR_WAITING_LIMIT;
+            carWash.pushObserver(waitingTo, this);
+        } else {
+            if (waitingTo >= tm)
+                System.out.println("[" + tm + "] -> Car " + number + ", " + type + " waited for washing more than " + CAR_WAITING_LIMIT + " CTU");
+
         }
-        if (tm - waitingFrom > CAR_WAITING_LIMIT) System.out.println("[" + tm + "] ->  Car " + number + ", " + type + " waited for washing more than " + CAR_WAITING_LIMIT + " CTU");
     }
 
-    public void setWaitingFrom(int waitingFrom) {
-        this.waitingFrom = waitingFrom;
+    public void setWaitingTo(int waitingTo) {
+        this.waitingTo = waitingTo;
     }
 
     public int getWashTime() {

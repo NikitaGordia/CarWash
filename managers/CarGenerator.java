@@ -29,8 +29,8 @@ public class CarGenerator implements CTUObserver {
     public void stop(int tm, CarWash carWash) {
         Car c = generate();
         System.out.println("[" + tm + "] -> New car arrives on the carWash, #" + c.getNumber() + ", " + c.getType());
+        c.start(tm, carWash);
         carWash.readyCar(c);
-
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CarGenerator implements CTUObserver {
         carWash.pushObserver(tm + CAR_SPAN_INTERVAL, this);
     }
 
-    public Car generate() {
+    private Car generate() {
         int i = Math.abs(r.nextInt() % 3);
         if (i == 0) return new Car(i, carCounter++, TIME_CITY, PRICE_CITY);
         if (i == 1) return new Car(i, carCounter++, TIME_TRAVELING, PRICE_TRAVELING);

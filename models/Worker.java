@@ -29,7 +29,7 @@ public class Worker implements CTUObserver {
             currentCar = carWash.getReadyCar();
             if (currentCar != null) {
                 working = tm;
-                currentCar.setWaitingFrom(-1); //Car chosen
+                currentCar.setWaitingTo(-1); //Car chosen
                 carWash.pushObserver(tm + currentCar.getWashTime(), this); //Check for release car
                 System.out.println("[" + tm + "] -> Worker " + name + " starts wash new car #" + currentCar.getNumber() + ", " + currentCar.getType());
             }
