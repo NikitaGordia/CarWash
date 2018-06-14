@@ -1,23 +1,13 @@
 import models.Car;
+import models.CarWash;
 import structures.CarStack;
+
+import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) {
-        CarStack stack = new CarStack();
-        stack.push(new Car(1, 67));
-        stack.push(new Car(2, 67));
-        stack.push(new Car(3, 67));
-        stack.pop();
-        stack.pop();
-        stack.push(new Car(4, 34));
-        stack.push(new Car(5, 43535));
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        stack.push(new Car(7, 324));
-        stack.pop();
-        stack.go();
+        CarWash wash = new CarWash(3, 720);
+        wash.perform();
     }
 }
