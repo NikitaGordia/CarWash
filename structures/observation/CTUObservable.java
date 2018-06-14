@@ -2,7 +2,6 @@ package structures.observation;
 
 import models.CarWash;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 

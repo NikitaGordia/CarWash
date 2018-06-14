@@ -2,12 +2,12 @@ package structures.observation;
 
 import models.CarWash;
 
-public abstract class CTUObserver {
+public interface CTUObserver {
 
-    protected abstract void stop(int tm, CarWash carWash);
+    void stop(int tm, CarWash carWash);
 
-    protected abstract void prepare(int tm, CarWash carWash);
+    void prepare(int tm, CarWash carWash);
 
-    protected abstract void start(int tm, CarWash carWash);
+    void start(int tm, CarWash carWash);
 
 }

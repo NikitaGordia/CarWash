@@ -29,14 +29,6 @@ public class CarStack {
         first = first.getNx();
         return res;
     }
-
-    public void go() {
-        CarNode nd = first;
-        while (nd != null) {
-            System.out.println(nd.getCar().getWashTime());
-            nd = nd.getNx();
-        }
-    }
 }
 
 class CarNode {

@@ -1,8 +1,4 @@
-import models.Car;
 import models.CarWash;
-import structures.CarStack;
-
-import java.util.Set;
 
 public class Main {
 

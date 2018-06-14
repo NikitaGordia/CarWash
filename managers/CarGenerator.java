@@ -6,7 +6,7 @@ import structures.observation.CTUObserver;
 
 import java.util.Random;
 
-public class CarGenerator extends CTUObserver {
+public class CarGenerator implements CTUObserver {
 
     private final static int TIME_CITY = 30;
     private final static int TIME_TRAVELING = 40;
@@ -26,18 +26,18 @@ public class CarGenerator extends CTUObserver {
     }
 
     @Override
-    protected void stop(int tm, CarWash carWash) {
+    public void stop(int tm, CarWash carWash) {
         Car c = generate();
-        System.out.println("[" + tm + "] -> New car arrives on the carWash, " + c.getNumber() + ", " + c.getType());
+        System.out.println("[" + tm + "] -> New car arrives on the carWash, #" + c.getNumber() + ", " + c.getType());
         carWash.readyCar(c);
 
     }
 
     @Override
-    protected void prepare(int tm, CarWash carWash) {}
+    public void prepare(int tm, CarWash carWash) {}
 
     @Override
-    protected void start(int tm, CarWash carWash) {
+    public void start(int tm, CarWash carWash) {
         carWash.pushObserver(tm + CAR_SPAN_INTERVAL, this);
     }
 

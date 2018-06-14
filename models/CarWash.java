@@ -39,18 +39,22 @@ public class CarWash {
         init();
 
         for (int cycle = 0; cycle < cycleCount; cycle++) {
+
             System.out.println("New production cycle " + cycle + " starts");
+
             carCountPerCycle = priceCity = priceTraveling = priceTravelingWithKids = 0;
             for (int cycleTm = 0; cycleTm < cycleInterval; cycleTm++) {
                 int tm = cycle * cycleInterval + cycleTm;
                 timeLine[tm].act(tm, this);
             }
+
             System.out.println("Per production cycle " + cycle + " :");
             System.out.println("    Total cars : " + carCountPerCycle + ";");
             System.out.println("    Total price : " + totalPrice + ";");
             System.out.println("        City type price : " + priceCity + ";");
             System.out.println("        Traveling type price : " + priceTraveling + ";");
             System.out.println("        Traveling type price with kids : " + priceTravelingWithKids + ";");
+
         }
     }
 
